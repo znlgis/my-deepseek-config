@@ -7,7 +7,7 @@
 
 | 文件          | 作用                                                   |
 | ------------- | ------------------------------------------------------ |
-| `config.toml` | Kimi CLI 配置：DeepSeek provider + `deepseek-chat` / `deepseek-reasoner` 两个模型 |
+| `config.toml.example` | Kimi CLI 配置示例：DeepSeek provider + `deepseek-chat` / `deepseek-reasoner` 两个模型 |
 | `AGENTS.md`   | 项目级记忆（核心原则、模型分工、纪律）                 |
 
 ## 安装
@@ -22,10 +22,10 @@ curl -LsSf https://code.kimi.com/install.sh | bash
 
 1. **申请 DeepSeek API Key**：https://platform.deepseek.com 。
 
-2. **放置配置**：把 `config.toml` 复制到 `~/.kimi/config.toml`，把 `api_key` 替换为真实 Key；
+2. **放置配置**：把 `config.toml.example` 复制为 `~/.kimi/config.toml`，把 `api_key` 替换为真实 Key；
    把 `AGENTS.md` 复制到项目根目录（或在项目内运行 `/init` 生成后并入本内容）。
 
-   > ⚠️ `config.toml` 会存放 `api_key`。若纳入版本管理，请改用占位符或忽略该文件，切勿提交真实 Key。
+   > ⚠️ `~/.kimi/config.toml` 会存放 `api_key`。真实配置放在该用户目录即可，切勿把含真实 Key 的文件提交进仓库。
 
 3. **启动并选择模型**：
 

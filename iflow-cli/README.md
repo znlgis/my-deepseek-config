@@ -7,7 +7,7 @@ iFlow CLI 属于 Gemini CLI 家族，支持自定义第三方模型。
 
 | 文件            | 作用                                                     |
 | --------------- | -------------------------------------------------------- |
-| `settings.json` | iFlow 设置：认证类型、DeepSeek 端点 / Key / 模型、上下文文件名 |
+| `settings.json.example` | iFlow 设置示例：认证类型、DeepSeek 端点 / Key / 模型、上下文文件名 |
 | `IFLOW.md`      | 项目级记忆（核心原则、模型分工、纪律）                   |
 
 ## 安装
@@ -21,10 +21,10 @@ npm install -g @iflow-ai/iflow-cli
 
 1. **申请 DeepSeek API Key**：https://platform.deepseek.com 。
 
-2. **放置配置**：把 `settings.json` 复制到 `~/.iflow/settings.json`（或项目级 `.iflow/settings.json`），
+2. **放置配置**：把 `settings.json.example` 复制为 `~/.iflow/settings.json`（或项目级 `.iflow/settings.json`），
    把其中的 `apiKey` 替换为真实 Key；把 `IFLOW.md` 复制到项目根目录或 `~/.iflow/IFLOW.md`。
 
-   > ⚠️ `settings.json` 会存放 `apiKey`。若纳入版本管理，请改用占位符或忽略该文件，切勿提交真实 Key。
+   > ⚠️ `settings.json` 会存放 `apiKey`。真实配置请放在 iFlow 配置目录，切勿把含真实 Key 的文件提交进仓库。
 
 3. **启动**：
 

@@ -1,6 +1,6 @@
-# Kimi CLI × DeepSeek 配置
-# 放到 ~/.kimi/config.toml（Kimi CLI 会在 /login 后自动写入此文件）。
-# 把 api_key 替换为真实 DeepSeek Key；若纳入版本管理请改用占位符，切勿提交真实 Key。
+# Kimi CLI × DeepSeek 配置示例
+# 复制为 ~/.kimi/config.toml（Kimi CLI 也会在 /login 后自动写入此文件）。
+# 把 api_key 替换为真实 DeepSeek Key。真实配置放在用户目录即可，切勿把含真实 Key 的文件提交进仓库。
 
 # DeepSeek 走 OpenAI Chat Completions 兼容协议。
 [providers.deepseek]

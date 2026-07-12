@@ -1,0 +1,23 @@
+# Kimi CLI × DeepSeek 配置
+# 放到 ~/.kimi/config.toml（Kimi CLI 会在 /login 后自动写入此文件）。
+# 把 api_key 替换为真实 DeepSeek Key；若纳入版本管理请改用占位符，切勿提交真实 Key。
+
+# DeepSeek 走 OpenAI Chat Completions 兼容协议。
+[providers.deepseek]
+type = "openai_legacy"
+base_url = "https://api.deepseek.com/v1"
+api_key = "sk-your-deepseek-key"
+
+# 轻量模型（Flash / 快速）：探索、检索、简单编辑、通用问答。
+[models.deepseek-chat]
+provider = "deepseek"
+model = "deepseek-chat"
+max_context_size = 131072
+capabilities = []
+
+# 主模型（Pro / 强推理）：规划、架构、根因分析、代码审查、重型实现。
+[models.deepseek-reasoner]
+provider = "deepseek"
+model = "deepseek-reasoner"
+max_context_size = 131072
+capabilities = ["always_thinking"]

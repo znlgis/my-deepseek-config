@@ -1,0 +1,28 @@
+{
+  "$schema": "https://qwenlm.github.io/qwen-code-docs/settings-schema.json",
+  "general": {
+    "preferredEditor": "vscode",
+    "vimMode": false
+  },
+  "ui": {
+    "theme": "Default"
+  },
+  "model": {
+    "name": "deepseek-chat",
+    "maxSessionTurns": 50,
+    "summarizeToolOutput": {
+      "run_shell_command": {
+        "tokenBudget": 2000
+      }
+    }
+  },
+  "context": {
+    "fileName": "QWEN.md"
+  },
+  "tools": {
+    "autoAccept": false
+  },
+  "privacy": {
+    "usageStatisticsEnabled": false
+  }
+}

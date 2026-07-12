@@ -1,0 +1,10 @@
+{
+  "theme": "Default",
+  "selectedAuthType": "openai-compatible",
+  "apiKey": "sk-your-deepseek-key",
+  "baseUrl": "https://api.deepseek.com/v1",
+  "modelName": "deepseek-chat",
+  "contextFileName": "IFLOW.md",
+  "autoAccept": false,
+  "usageStatisticsEnabled": false
+}

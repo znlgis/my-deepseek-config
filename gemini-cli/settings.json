@@ -1,0 +1,10 @@
+{
+  "$schema": "https://raw.githubusercontent.com/google-gemini/gemini-cli/main/packages/cli/src/config/settingsSchema.json",
+  "selectedAuthType": "openai",
+  "theme": "Default",
+  "contextFileName": "GEMINI.md",
+  "model": "deepseek-chat",
+  "maxSessionTurns": 50,
+  "autoAccept": false,
+  "usageStatisticsEnabled": false
+}

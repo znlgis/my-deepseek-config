@@ -1,0 +1,26 @@
+# Codex CLI × DeepSeek 配置
+# 放到 ~/.codex/config.toml。API Key 通过环境变量 DEEPSEEK_API_KEY 注入，切勿写入本文件。
+
+# 默认模型：deepseek-chat（Flash / 快速）。复杂推理可用 `codex -m deepseek-reasoner` 切换。
+model = "deepseek-chat"
+model_provider = "deepseek"
+
+# 审批与沙箱基线：可写工作区，越权操作按需征求同意。
+approval_policy = "on-request"
+sandbox_mode = "workspace-write"
+
+# DeepSeek 走 OpenAI 兼容的 chat completions 协议。
+[model_providers.deepseek]
+name = "DeepSeek"
+base_url = "https://api.deepseek.com/v1"
+env_key = "DEEPSEEK_API_KEY"
+wire_api = "chat"
+
+# 可选：为不同档位预置 profile，用 `codex --profile pro` / `--profile flash` 选择。
+[profiles.pro]
+model = "deepseek-reasoner"
+model_provider = "deepseek"
+
+[profiles.flash]
+model = "deepseek-chat"
+model_provider = "deepseek"

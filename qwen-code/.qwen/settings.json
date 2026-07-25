@@ -1,0 +1,28 @@
+{
+  "general": {
+    "language": "zh-CN",
+    "outputLanguage": "zh-CN",
+    "enableAutoUpdate": true
+  },
+  "ui": {
+    "theme": "Qwen Dark",
+    "compactMode": false,
+    "showLineNumbers": true
+  },
+  "model": {
+    "name": "qwen3-coder-plus",
+    "reasoningEffort": "high"
+  },
+  "context": {
+    "fileName": ["QWEN.md", "AGENTS.md", "CONTEXT.md"],
+    "fileFiltering": {
+      "respectGitIgnore": true,
+      "respectQwenIgnore": true
+    }
+  },
+  "permissions": {
+    "allow": ["Bash(git *)", "Bash(npm *)", "Bash(cargo *)", "Bash(go *)"],
+    "ask": ["Edit", "Bash(git push *)"],
+    "deny": ["Bash(rm -rf *)", "Bash(curl * | sh)", "Read(.env)"]
+  }
+}

@@ -1,0 +1,36 @@
+model = "gpt-5.5"
+model_provider = "openai"
+model_reasoning_effort = "medium"
+approval_policy = "on-request"
+sandbox_mode = "workspace_write"
+default_permissions = "workspace"
+
+[tools]
+web_search = true
+
+[features]
+memories = true
+token_budget = { enabled = true, reminder_threshold_tokens = 32000 }
+
+[agents]
+enabled = true
+max_depth = 1
+
+[permissions.dev]
+description = "日常开发权限"
+
+[permissions.dev.filesystem]
+":minimal" = "read"
+":workspace_roots" = { "." = "write" }
+
+[permissions.dev.network]
+enabled = true
+mode = "full"
+
+[permissions.dev.network.domains]
+"*.github.com" = "allow"
+"*.npmjs.org" = "allow"
+
+[tui]
+theme = "catppuccin-mocha"
+status_line = ["model", "current-dir"]

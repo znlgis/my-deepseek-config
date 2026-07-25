@@ -1,0 +1,14 @@
+{
+  "modelName": "Qwen3-Coder",
+  "contextFileName": ["IFLOW.md", "AGENTS.md", "CONTEXT.md"],
+  "autoAccept": false,
+  "coreTools": ["ReadFileTool", "GlobTool", "ShellTool", "GrepTool"],
+  "fileFiltering": {
+    "respectGitIgnore": true,
+    "enableRecursiveFileSearch": true
+  },
+  "tokensLimit": 128000,
+  "compressionTokenThreshold": 0.8,
+  "shellTimeout": 120000,
+  "useRipgrep": true
+}

@@ -1,9 +1,6 @@
 ---
 name: security-review
 description: Audit code changes for security vulnerabilities before merging. Reports findings; never auto-fixes silently.
-globs: "**/*.{ts,tsx,js,jsx,py,go,rs,java,kt,swift,c,cpp,h,hpp,cs,rb,php,sh}"
-version: 1.0.0
-alwaysApply: false
 ---
 
 # Security Review

@@ -8,10 +8,10 @@
 
 Claude Code 通过 `ANTHROPIC_MODEL` / `ANTHROPIC_SMALL_FAST_MODEL` 支持主模型 + 轻量模型：
 
-- **主模型（Pro）**：`deepseek-reasoner` —— 规划、架构、根因分析、代码审查、重型实现。
-- **轻量模型（Flash）**：`deepseek-chat` —— 后台快速任务、标题生成、简单编辑、探索。
+- **主模型（Pro）**：`deepseek-v4-pro` —— 规划、架构、根因分析、代码审查、重型实现。
+- **轻量模型（Flash）**：`deepseek-v4-flash` —— 后台快速任务、标题生成、简单编辑、探索。
 
-> 待 DeepSeek V4（pro/flash）发布，只需在 `settings.json` 的 `env` 中替换这两个模型 ID。
+> `deepseek-v4-pro` / `deepseek-v4-flash` 为 DeepSeek 当前官方模型；旧别名 `deepseek-reasoner` / `deepseek-chat` 已并入并停用。
 
 ## 核心原则
 

@@ -10,8 +10,13 @@
     "showLineNumbers": true
   },
   "model": {
-    "name": "qwen3-coder-plus",
+    "name": "deepseek-v4-flash",
     "reasoningEffort": "high"
+  },
+  "security": {
+    "auth": {
+      "selectedType": "openai"
+    }
   },
   "context": {
     "fileName": ["QWEN.md", "AGENTS.md", "CONTEXT.md"],
@@ -19,6 +24,9 @@
       "respectGitIgnore": true,
       "respectQwenIgnore": true
     }
+  },
+  "privacy": {
+    "usageStatisticsEnabled": false
   },
   "permissions": {
     "allow": ["Bash(git *)", "Bash(npm *)", "Bash(cargo *)", "Bash(go *)"],

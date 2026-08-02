@@ -1,5 +1,9 @@
 {
-  "modelName": "Qwen3-Coder",
+  "theme": "Default",
+  "selectedAuthType": "openai-compatible",
+  "apiKey": "sk-your-deepseek-key",
+  "baseUrl": "https://api.deepseek.com/v1",
+  "modelName": "deepseek-v4-flash",
   "contextFileName": ["IFLOW.md", "AGENTS.md", "CONTEXT.md"],
   "autoAccept": false,
   "coreTools": ["ReadFileTool", "GlobTool", "ShellTool", "GrepTool"],
@@ -10,5 +14,6 @@
   "tokensLimit": 128000,
   "compressionTokenThreshold": 0.8,
   "shellTimeout": 120000,
-  "useRipgrep": true
+  "useRipgrep": true,
+  "usageStatisticsEnabled": false
 }

@@ -11,23 +11,27 @@
 
 | 档位 | 官方模型 ID       | 定位     | 用途                                     |
 | ---- | ----------------- | -------- | ---------------------------------------- |
-| Pro  | `deepseek-reasoner` | 强推理   | 复杂规划、架构、根因分析、代码审查、重型实现 |
-| Flash| `deepseek-chat`     | 快速通用 | 探索、检索、简单编辑、通用问答、轻量任务   |
+| Pro  | `deepseek-v4-pro`   | 强推理   | 复杂规划、架构、根因分析、代码审查、重型实现 |
+| Flash| `deepseek-v4-flash` | 快速通用 | 探索、检索、简单编辑、通用问答、轻量任务   |
 
-- **Flash 优先**：明确定义的搜索 / 查找 / 小改动优先用 `deepseek-chat`。
-- **Pro 升级**：`deepseek-chat` 力不从心时，携带完整上下文升级到 `deepseek-reasoner`。
-- **Pro 专注推理**：规划、架构、审查、复杂实现只走 `deepseek-reasoner`。
+- **Flash 优先**：明确定义的搜索 / 查找 / 小改动优先用 `deepseek-v4-flash`。
+- **Pro 升级**：`deepseek-v4-flash` 力不从心时，携带完整上下文升级到 `deepseek-v4-pro`。
+- **Pro 专注推理**：规划、架构、审查、复杂实现只走 `deepseek-v4-pro`。
 
 > **模型命名说明**：本仓库统一使用 DeepSeek 官方当前可用的
-> `deepseek-chat`（非思考）与 `deepseek-reasoner`（思考）。
-> 参考仓库中的 `deepseek-v4-pro` / `deepseek-v4-flash` 为其双模型分工的命名思路，
-> 待官方发布对应型号后，只需在各工具配置里替换模型 ID 即可，其余分工逻辑不变。
+> `deepseek-v4-pro`（强推理）与 `deepseek-v4-flash`（快速通用）。
+> 旧别名 `deepseek-reasoner` / `deepseek-chat` 已并入 `deepseek-v4-*` 并于
+> 2026-07-24 起停用，各工具配置一律改用新的 `deepseek-v4-pro` / `deepseek-v4-flash`。
 
 ## DeepSeek 接入端点
 
-- **OpenAI 兼容**：`https://api.deepseek.com/v1`（供 Qwen Code、Gemini CLI、Codex、iFlow、Kimi CLI 等使用）
-- **Anthropic 兼容**：`https://api.deepseek.com/anthropic`（供 Claude Code 使用）
+- **OpenAI 兼容**：`https://api.deepseek.com`（`/v1` 后缀可选，兼容 OpenAI Chat Completions，供 Qwen Code、iFlow、Kimi CLI 等使用）
+- **Anthropic 兼容**：`https://api.deepseek.com/anthropic`（供 Claude Code、Copilot CLI 的 Anthropic 协议使用）
 - **API Key**：在 https://platform.deepseek.com 申请，形如 `sk-...`，通过环境变量注入，**切勿写入仓库**。
+
+> **协议限制**：DeepSeek 只提供 Chat Completions 与 Anthropic 两类接口，**不提供** OpenAI Responses API。
+> 因此仅支持 Responses 协议的工具（如新版 OpenAI Codex CLI）或仅支持 Google 协议的工具（如 Gemini CLI）
+> 无法直连 DeepSeek，需要经 [LiteLLM](https://github.com/BerriAI/litellm) 等代理转换后再接入。
 
 ## 核心原则
 
@@ -45,7 +49,7 @@
 
 ## 约束
 
-- **不引入新模型。** 仅使用 `deepseek-chat` 与 `deepseek-reasoner`。
+- **不引入新模型。** 仅使用 `deepseek-v4-pro` 与 `deepseek-v4-flash`。
 - **不擅自新增依赖**，除非用户明确说明理由。
 - **纯配置优先。** 优先改提示词 / 配置，而非引入新工具。
 

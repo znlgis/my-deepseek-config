@@ -1,9 +1,6 @@
 ---
 name: conventional-commits
 description: Write commit messages and PR titles following the Conventional Commits standard.
-globs: "**/*"
-version: 1.0.0
-alwaysApply: false
 ---
 
 # Conventional Commits

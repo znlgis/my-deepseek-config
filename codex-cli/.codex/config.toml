@@ -1,36 +1,27 @@
-model = "gpt-5.5"
-model_provider = "openai"
+# OpenAI Codex CLI × DeepSeek 配置（放到 ~/.codex/config.toml）
+#
+# ⚠️ 新版 Codex CLI 只支持 OpenAI Responses API（wire_api = "responses"），已移除
+# Chat Completions（wire_api = "chat" 会直接报错）。DeepSeek 只提供 Chat Completions /
+# Anthropic 接口，不提供 Responses API，因此**无法直连**，需要经 Responses 兼容代理转换：
+#   1) 用 LiteLLM 等把 DeepSeek 暴露为 /v1/responses 兼容端点；
+#   2) 把下面 [model_providers.deepseek].base_url 指向该代理；
+#   3) 把 DeepSeek API Key 放进环境变量 DEEPSEEK_API_KEY（勿写入本文件）。
+# 说明：https://github.com/openai/codex/discussions/7782
+#
+# provider 定义只在全局 ~/.codex/config.toml 生效，项目级 .codex/config.toml 不能覆盖。
+
+model = "deepseek-v4-pro"
+model_provider = "deepseek"
 model_reasoning_effort = "medium"
 approval_policy = "on-request"
-sandbox_mode = "workspace_write"
-default_permissions = "workspace"
+sandbox_mode = "workspace-write"
+
+[model_providers.deepseek]
+name = "DeepSeek (via Responses-compatible proxy)"
+# 指向你的 Responses 兼容代理（示例为本地 LiteLLM），而非 DeepSeek 官方地址。
+base_url = "http://localhost:4000/v1"
+env_key = "DEEPSEEK_API_KEY"
+wire_api = "responses"
 
 [tools]
 web_search = true
-
-[features]
-memories = true
-token_budget = { enabled = true, reminder_threshold_tokens = 32000 }
-
-[agents]
-enabled = true
-max_depth = 1
-
-[permissions.dev]
-description = "日常开发权限"
-
-[permissions.dev.filesystem]
-":minimal" = "read"
-":workspace_roots" = { "." = "write" }
-
-[permissions.dev.network]
-enabled = true
-mode = "full"
-
-[permissions.dev.network.domains]
-"*.github.com" = "allow"
-"*.npmjs.org" = "allow"
-
-[tui]
-theme = "catppuccin-mocha"
-status_line = ["model", "current-dir"]

@@ -2,9 +2,6 @@
   "general": {
     "defaultApprovalMode": "auto_edit"
   },
-  "model": {
-    "name": "gemini-3-flash-preview"
-  },
   "context": {
     "fileName": ["AGENTS.md", "GEMINI.md"]
   },

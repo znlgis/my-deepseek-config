@@ -21,28 +21,29 @@
 | Claude Code | [`claude-code/`](claude-code) | CLAUDE.md + .claude/ | `CLAUDE.md` | 4× SKILL.md + rules/ 分层 |
 | Gemini CLI | [`gemini-cli/`](gemini-cli) | GEMINI.md + .gemini/ | `GEMINI.md` | 4× SKILL.md |
 | Qwen Code | [`qwen-code/`](qwen-code) | QWEN.md + .qwen/ | `QWEN.md`（层级加载） | 4× SKILL.md |
-| GitHub Copilot CLI | [`copilot-cli/`](copilot-cli) | .github/ + skills/ | `copilot-instructions.md` | 4× .agent.md |
+| GitHub Copilot CLI | [`copilot-cli/`](copilot-cli) | .github/ + .copilot/ | `copilot-instructions.md` | 4× SKILL.md |
 | OpenAI Codex | [`codex-cli/`](codex-cli) | AGENTS.md + .codex/ | `AGENTS.md` | 4× SKILL.md |
 | iFlow CLI | [`iflow-cli/`](iflow-cli) | IFLOW.md + .iflow/ | `IFLOW.md` | 4× SubCommand TOML |
 | Kimi CLI | [`kimi-cli/`](kimi-cli) | AGENTS.md + config.toml | `AGENTS.md` | 4× SKILL.md |
 
-每个工具目录内含至少以下内容：
+每个工具目录内含至少以下内容（具体布局随工具原生约定略有差异）：
 
 ```
 <tool>/
 ├── <主指令文件>          # 核心行为准则 + 代码风格 + 反模式 + 证据纪律
-├── .<tool>/              # 工具原生配置目录
-│   ├── settings.json     # 权限 / 模型 / 上下文设置
-│   ├── skills/           # 可复用 Skill（或 commands/ for iFlow）
+├── <原生配置目录/文件>    # .claude/ .gemini/ .qwen/ .iflow/ .codex/ 或 config.toml
+│   ├── settings.json     # 权限 / 模型 / 上下文设置（部分工具为 config.toml）
+│   ├── skills/           # 可复用 Skill（iFlow 为 commands/；Copilot 在 .github/skills/）
 │   └── ...               # 工具特有配置（rules/、commands/ 等）
-└── README.md             # 安装与使用说明（部分工具）
+├── .env.example          # 需要密钥的工具附带（BYOK / OpenAI 兼容变量）
+└── README.md             # 安装与使用说明
 ```
 
 ## 4 个通用 Skill
 
 | Skill | 用途 | 各工具实现方式 |
 | --- | --- | --- |
-| **code-review** | 多维度代码审查，按 diff 大小缩放深度，严重度分级 | Claude/Gemini/Qwen/Codex/Kimi: SKILL.md；Copilot: .agent.md；iFlow: SubCommand TOML |
+| **code-review** | 多维度代码审查，按 diff 大小缩放深度，严重度分级 | Claude/Gemini/Qwen/Codex/Kimi/Copilot: SKILL.md；iFlow: SubCommand TOML |
 | **conventional-commits** | 按 Conventional Commits 规范生成 commit message | 同上 |
 | **security-review** | 安全漏洞审计（注入/密钥/认证/数据暴露/依赖等 12 项检查） | 同上 |
 | **verification-before-completion** | 完成前强制验证门禁（文件完整性/调用者/构建/测试/lint） | 同上 |
@@ -65,11 +66,12 @@
 
 1. 选择你使用的工具，进入对应目录。
 2. 将目录下的配置文件复制到工具期望的位置（详见各工具 README 或目录内说明）：
-   - Claude Code：`CLAUDE.md` → 项目根，`.claude/` → 项目根
-   - Gemini CLI / Qwen Code / iFlow CLI：`.gemini/` / `.qwen/` / `.iflow/` → 项目根
-   - Copilot CLI：`.github/` → 项目根，skills/ → `~/.copilot/skills/`
-   - Codex CLI：`.codex/` → 项目根
-   - Kimi CLI：`config.toml` → `~/.kimi/`，skills/ → `~/.kimi/skills/`
+   - Claude Code：`CLAUDE.md` → 项目根，`.claude/` → 项目根（原生支持 DeepSeek，走 Anthropic 兼容端点）
+   - Qwen Code / iFlow CLI：`.qwen/` / `.iflow/` → 项目根（原生支持 DeepSeek，OpenAI 兼容）
+   - Gemini CLI：`.gemini/` → 项目根。注意上游仅支持 Google 模型，接 DeepSeek 需 LiteLLM 代理或 `llxprt-code` 分叉；纯 DeepSeek 场景建议改用 Qwen Code / iFlow CLI
+   - Copilot CLI：`.github/` → 项目根（`copilot-instructions.md` + `skills/` 自动发现），`.copilot/settings.json` → `~/.copilot/`，再按 `.env.example` 配置 BYOK 环境变量把 DeepSeek 接为后端模型
+   - Codex CLI：`.codex/` → 项目根。DeepSeek 无 Responses API，需经 LiteLLM 等 Responses 兼容代理接入，且 provider 定义须放全局 `~/.codex/config.toml`
+   - Kimi CLI：`config.toml` → `~/.kimi/`，`skills/` → `~/.kimi/skills/`（原生支持 DeepSeek，OpenAI 兼容）
 3. 按各工具要求配置 API Key（环境变量或配置文件），**切勿将 Key 写入仓库**。
 4. 启动工具即可。
 

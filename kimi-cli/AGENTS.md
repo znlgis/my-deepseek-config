@@ -69,9 +69,10 @@
 
 ## 模型使用
 
-Kimi CLI 通过 `config.toml` 配置模型。默认模型为 `kimi-for-coding`（Kimi K2 Thinking Turbo），支持思考模式（thinking）和图片输入（image_in）。
+Kimi CLI 通过 `config.toml` 配置模型。本配置接入 DeepSeek 双模型：默认 `deepseek-v4-flash`
+（Flash / 快速通用），复杂推理切到 `deepseek-v4-pro`（Pro / 强推理，`always_thinking`）。
 
-- shell 模式下用 `/model` 切换模型与思考模式。
+- shell 模式下用 `/model` 在 `deepseek-v4-flash` 与 `deepseek-v4-pro` 间切换。
 - 启动时可用 `--thinking` / `--no-thinking` 控制思考模式。
 
 ## 不确定时的处理

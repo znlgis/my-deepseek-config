@@ -10,8 +10,8 @@ iFlow CLI 通过 OpenAI 兼容配置接入 DeepSeek：
 
 | 档位 | 模型 ID | 定位 | 用途 |
 | --- | --- | --- | --- |
-| Pro | `deepseek-reasoner` | 强推理 | 规划、架构、根因分析、代码审查、重型实现 |
-| Flash | `deepseek-chat` | 快速通用 | 探索、检索、简单编辑、通用问答（默认） |
+| Pro | `deepseek-v4-pro` | 强推理 | 规划、架构、根因分析、代码审查、重型实现 |
+| Flash | `deepseek-v4-flash` | 快速通用 | 探索、检索、简单编辑、通用问答（默认） |
 
 - **Flash 优先**：搜索 / 查找 / 小改动先用 Flash。
 - **Pro 升级**：Flash 力不从心时，携带完整上下文升至 Pro。
@@ -31,7 +31,7 @@ iFlow CLI 通过 OpenAI 兼容配置接入 DeepSeek：
 
 ## 约束
 
-- **不引入新模型**。仅使用 `deepseek-chat` 与 `deepseek-reasoner`。
+- **不引入新模型**。仅使用 `deepseek-v4-flash` 与 `deepseek-v4-pro`。
 - **不擅自新增依赖**，除非明确说明理由且经确认。
 - **纯配置优先**。优先改提示词 / 配置，而非引入新工具。
 

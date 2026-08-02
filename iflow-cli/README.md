@@ -7,7 +7,8 @@ iFlow CLI 属于 Gemini CLI 家族，支持自定义第三方模型。
 
 | 文件            | 作用                                                     |
 | --------------- | -------------------------------------------------------- |
-| `settings.json.example` | iFlow 设置示例：认证类型、DeepSeek 端点 / Key / 模型、上下文文件名 |
+| `.iflow/settings.json` | iFlow 设置：认证类型、DeepSeek 端点 / Key / 模型、上下文文件名、工具 |
+| `.iflow/commands/`     | 4 个自定义 SubCommand（TOML）                     |
 | `IFLOW.md`      | 项目级记忆（核心原则、模型分工、纪律）                   |
 
 ## 安装
@@ -21,7 +22,7 @@ npm install -g @iflow-ai/iflow-cli
 
 1. **申请 DeepSeek API Key**：https://platform.deepseek.com 。
 
-2. **放置配置**：把 `settings.json.example` 复制为 `~/.iflow/settings.json`（或项目级 `.iflow/settings.json`），
+2. **放置配置**：把 `.iflow/settings.json` 复制到 `~/.iflow/settings.json`（或项目级 `.iflow/settings.json`），
    把其中的 `apiKey` 替换为真实 Key；把 `IFLOW.md` 复制到项目根目录或 `~/.iflow/IFLOW.md`。
 
    > ⚠️ `settings.json` 会存放 `apiKey`。真实配置请放在 iFlow 配置目录，切勿把含真实 Key 的文件提交进仓库。
@@ -32,7 +33,7 @@ npm install -g @iflow-ai/iflow-cli
    iflow
    ```
 
-   进入会话后可用 `/model` 在 `deepseek-chat` 与 `deepseek-reasoner` 间切换。
+   进入会话后可用 `/model` 在 `deepseek-v4-flash` 与 `deepseek-v4-pro` 间切换。
 
 ## 关键配置（settings.json）
 
@@ -41,6 +42,6 @@ npm install -g @iflow-ai/iflow-cli
 | `selectedAuthType` | `openai-compatible`           | 使用 OpenAI 兼容自定义模型 |
 | `baseUrl`          | `https://api.deepseek.com/v1` | DeepSeek 端点            |
 | `apiKey`           | `sk-...`                      | DeepSeek API Key         |
-| `modelName`        | `deepseek-chat`               | 默认模型（Flash）        |
+| `modelName`        | `deepseek-v4-flash`               | 默认模型（Flash）        |
 
-> 模型分工：`deepseek-reasoner`（Pro / 强推理）+ `deepseek-chat`（Flash / 快速）。
+> 模型分工：`deepseek-v4-pro`（Pro / 强推理）+ `deepseek-v4-flash`（Flash / 快速）。

@@ -8,11 +8,11 @@
 
 | 模型 | 用途 |
 |------|------|
-| `deepseek-reasoner`（Pro） | 规划、架构、根因分析、代码审查、重型实现 |
-| `deepseek-chat`（Flash） | 探索、检索、简单编辑、通用问答、轻量任务 |
+| `deepseek-v4-pro`（Pro） | 规划、架构、根因分析、代码审查、重型实现 |
+| `deepseek-v4-flash`（Flash） | 探索、检索、简单编辑、通用问答、轻量任务 |
 
-- **Flash 优先**：搜索 / 查找 / 小改动用 `deepseek-chat`（在 `.env` 中设为默认）。
-- **Pro 升级**：Flash 力不从心时切到 `deepseek-reasoner`。
+- **Flash 优先**：搜索 / 查找 / 小改动用 `deepseek-v4-flash`（在 `.env` 中设为默认）。
+- **Pro 升级**：Flash 力不从心时切到 `deepseek-v4-pro`。
 - 接入端点：`https://api.deepseek.com/v1`（OpenAI 兼容），API Key 通过 `.env` 注入，**切勿写入仓库**。
 
 ## 核心原则

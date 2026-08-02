@@ -7,7 +7,7 @@
 
 | 文件          | 作用                                                   |
 | ------------- | ------------------------------------------------------ |
-| `config.toml.example` | Kimi CLI 配置示例：DeepSeek provider + `deepseek-chat` / `deepseek-reasoner` 两个模型 |
+| `config.toml` | Kimi CLI 配置：DeepSeek provider + `deepseek-v4-flash` / `deepseek-v4-pro` 两个模型 |
 | `AGENTS.md`   | 项目级记忆（核心原则、模型分工、纪律）                 |
 
 ## 安装
@@ -22,7 +22,7 @@ curl -LsSf https://code.kimi.com/install.sh | bash
 
 1. **申请 DeepSeek API Key**：https://platform.deepseek.com 。
 
-2. **放置配置**：把 `config.toml.example` 复制为 `~/.kimi/config.toml`，把 `api_key` 替换为真实 Key；
+2. **放置配置**：把 `config.toml` 复制为 `~/.kimi/config.toml`，把 `api_key` 替换为真实 Key；
    把 `AGENTS.md` 复制到项目根目录（或在项目内运行 `/init` 生成后并入本内容）。
 
    > ⚠️ `~/.kimi/config.toml` 会存放 `api_key`。真实配置放在该用户目录即可，切勿把含真实 Key 的文件提交进仓库。
@@ -34,7 +34,7 @@ curl -LsSf https://code.kimi.com/install.sh | bash
    kimi
    ```
 
-   进入后用 `/model` 选择 `deepseek-chat`（Flash）或 `deepseek-reasoner`（Pro，思考模式）。
+   进入后用 `/model` 选择 `deepseek-v4-flash`（Flash）或 `deepseek-v4-pro`（Pro，思考模式）。
 
 ## 关键配置（config.toml）
 
@@ -42,7 +42,7 @@ curl -LsSf https://code.kimi.com/install.sh | bash
 | --------------------------------- | ----------------------------- | ---------------------------- |
 | `providers.deepseek.type`         | `openai_legacy`               | OpenAI Chat Completions 协议 |
 | `providers.deepseek.base_url`     | `https://api.deepseek.com/v1` | DeepSeek 端点                |
-| `models.deepseek-chat`            | —                             | Flash（快速，默认）          |
-| `models.deepseek-reasoner`        | `capabilities=["always_thinking"]` | Pro（强推理，思考）    |
+| `models.deepseek-v4-flash`            | —                             | Flash（快速，默认）          |
+| `models.deepseek-v4-pro`        | `capabilities=["always_thinking"]` | Pro（强推理，思考）    |
 
-> 待 DeepSeek V4（pro/flash）发布后，替换 `[models.*]` 里的 `model` ID 即可。
+> 旧别名 `deepseek-reasoner` / `deepseek-chat` 已停用，请使用当前官方模型 `deepseek-v4-pro` / `deepseek-v4-flash`。

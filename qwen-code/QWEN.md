@@ -14,13 +14,13 @@
 
 Qwen Code 通过 OpenAI 兼容端点接入 DeepSeek：
 
-- **主模型（Pro）**：`deepseek-reasoner` —— 规划、架构、根因分析、代码审查、重型实现。
-- **轻量模型（Flash）**：`deepseek-chat` —— 探索、检索、简单编辑、通用问答。
+- **主模型（Pro）**：`deepseek-v4-pro` —— 规划、架构、根因分析、代码审查、重型实现。
+- **轻量模型（Flash）**：`deepseek-v4-flash` —— 探索、检索、简单编辑、通用问答。
 
-默认使用 `deepseek-chat`，遇到复杂推理时切到 `deepseek-reasoner`（用 `/model` 切换或改
+默认使用 `deepseek-v4-flash`，遇到复杂推理时切到 `deepseek-v4-pro`（用 `/model` 切换或改
 `.env` 中的 `OPENAI_MODEL`）。
 
-> 待 DeepSeek V4（pro/flash）发布后，只需替换模型 ID，其余分工逻辑不变。
+> `deepseek-v4-pro` / `deepseek-v4-flash` 为 DeepSeek 当前官方模型；旧别名 `deepseek-reasoner` / `deepseek-chat` 已并入并停用。
 
 ## 核心原则
 
@@ -36,7 +36,7 @@ Qwen Code 通过 OpenAI 兼容端点接入 DeepSeek：
 
 ## 约束
 
-- **不引入新模型。** 仅 `deepseek-chat` 与 `deepseek-reasoner`。
+- **不引入新模型。** 仅 `deepseek-v4-flash` 与 `deepseek-v4-pro`。
 - **不擅自新增依赖**，除非用户明确说明理由。
 - **纯配置优先。** 优先改提示词/配置，而非引入新工具。
 

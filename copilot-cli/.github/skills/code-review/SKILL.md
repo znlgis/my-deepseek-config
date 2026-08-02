@@ -1,9 +1,6 @@
 ---
 name: code-review
 description: Token-frugal, multi-dimension code review. Reports findings by severity; never rewrites code unless explicitly asked.
-globs: "**/*.{ts,tsx,js,jsx,py,go,rs,java,kt,swift,c,cpp,h,hpp,cs,rb,php,sh,bash,zsh}"
-version: 1.0.0
-alwaysApply: false
 ---
 
 # Code Review

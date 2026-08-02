@@ -1,9 +1,6 @@
 ---
 name: verification-before-completion
 description: Enforce evidence-before-assertions discipline. Use when about to claim work is complete, before committing, or before creating PRs.
-globs: "**/*"
-version: 1.0.0
-alwaysApply: false
 ---
 
 # Verification Before Completion
